@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/pages/home_page.dart';
 
 void main() {
   runApp(
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: AuthGate(),
+    return MaterialApp(
+      home: const HomePage(),
+      theme: ThemeData(primarySwatch: Colors.yellow),
       debugShowCheckedModeBanner: false,
     );
   }

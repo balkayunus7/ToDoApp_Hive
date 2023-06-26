@@ -6,6 +6,7 @@ class DialogBox extends StatelessWidget {
   VoidCallback onSave;
   VoidCallback onCancel;
 
+  // ignore: prefer_typing_uninitialized_variables
   final controller;
   DialogBox(
       {super.key,

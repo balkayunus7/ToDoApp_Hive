@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:to_do_app/contants/constants.dart';
 
 // ignore: must_be_immutable
 class ToDoTile extends StatelessWidget {
@@ -18,26 +19,34 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+      padding: EdgeInsets.only(
+        top: _WidgetSize.cardPadSize.value(),
+        left: _WidgetSize.cardPadSize.value(),
+        right: _WidgetSize.cardPadSize.value(),
+      ),
       child: Slidable(
         endActionPane: ActionPane(motion: const StretchMotion(), children: [
           SlidableAction(
             onPressed: deleteFunction,
             icon: Icons.delete_outline_outlined,
-            backgroundColor: Colors.red.shade300,
+            backgroundColor: ColorConstants.colorRedShade,
           )
         ]),
         child: Container(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(
+            _WidgetSize.cardPadSize.value(),
+          ),
           decoration: BoxDecoration(
-              color: Colors.yellow, borderRadius: BorderRadius.circular(12)),
+              color: ColorConstants.colorYellow,
+              borderRadius:
+                  BorderRadius.circular(_WidgetSize.borderRadSize.value())),
           child: Row(
             children: [
               // checkbox
               Checkbox(
                   value: taskCompleted,
                   onChanged: onChanged,
-                  activeColor: Colors.black),
+                  activeColor: ColorConstants.colorBlack),
               // task name
               Text(
                 taskName,
@@ -51,5 +60,20 @@ class ToDoTile extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+enum _WidgetSize { borderRadSize, cardPadSize }
+
+// ignore: library_private_types_in_public_api
+extension WidgetSizeExtension on _WidgetSize {
+  double value() {
+    switch (this) {
+      case _WidgetSize.cardPadSize:
+        return 25;
+
+      case _WidgetSize.borderRadSize:
+        return 12;
+    }
   }
 }

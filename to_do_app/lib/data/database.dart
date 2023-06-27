@@ -1,6 +1,9 @@
 import 'package:hive/hive.dart';
+import 'package:to_do_app/contants/constants.dart';
 
 class ToDoDataBase {
+  DatabaseConstants databaseConst = DatabaseConstants();
+
 // referance the box
   final _myBox = Hive.box("myBox");
 
@@ -10,18 +13,18 @@ class ToDoDataBase {
   // run this method if this is the 1st time opening this app
   void createInitialData() {
     toDoList = [
-      ["Make a tutorial", false],
-      ["Do exercise", false],
+      [databaseConst.defaultEx1, false],
+      [databaseConst.defaultEx2, false],
     ];
   }
 
   // load the data from database
   void loadData() {
-    toDoList = _myBox.get("TODOLIST");
+    toDoList = _myBox.get(databaseConst.hiveKey);
   }
 
   // update the data from database
   void updateData() {
-    _myBox.put("TODOLIST", toDoList);
+    _myBox.put(databaseConst.hiveKey, toDoList);
   }
 }

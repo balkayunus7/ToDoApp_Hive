@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/contants/constants.dart';
 import 'package:to_do_app/util/my_button.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +18,7 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.yellow.shade300,
+      backgroundColor: ColorConstants.colorYellowShade,
       content: SizedBox(
         height: 120,
         child: Column(
@@ -26,8 +27,9 @@ class DialogBox extends StatelessWidget {
             // get user input
             TextField(
               controller: controller,
-              decoration: const InputDecoration(
-                  hintText: "Add a new task", border: OutlineInputBorder()),
+              decoration: InputDecoration(
+                  hintText: DialogConstants.hintText,
+                  border: const OutlineInputBorder()),
             ),
 
             //buttons => save / cancel
@@ -37,12 +39,12 @@ class DialogBox extends StatelessWidget {
               children: [
                 // save button
                 MyButton(
-                  text: "Save",
+                  text: DialogConstants.buttonSaveText,
                   onPressed: onSave,
                 ),
                 const SizedBox(width: 5),
                 MyButton(
-                  text: "Cancel",
+                  text: DialogConstants.buttonCancelText,
                   onPressed: onCancel,
                 )
                 // cancel button
